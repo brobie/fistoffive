@@ -1,0 +1,8 @@
+<div id="navigation">
+	<ul>
+		<li><a href="/">Create Statement</a></li>
+		<?php if ($this->statement):?>
+			<li><a href="/statement/create/statement/<?php echo $this->statement->getStatement()?>">Restate</a></li>
+		<?php endif;?>
+	</ul>
+</div>

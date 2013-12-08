@@ -1,0 +1,26 @@
+<div id="the-statement">
+	<?php echo $this->statement->getStatement() ?>
+</div>
+
+<form method="post" action="/statement/answer-create">
+	<label for="answer-name">Name:</label><input id="answer-name" type="text" name="name"/>
+	
+	<br />
+	
+	<label for="answers">Answer:</label>
+	<span id="answers">
+	<input id="answer-answer-1" type="radio" name="answer" value="1" /><label for="answer-answer-1">1</label>
+	<input id="answer-answer-2" type="radio" name="answer" value="2" /><label for="answer-answer-2">2</label>
+	<input id="answer-answer-3" type="radio" name="answer" value="3" /><label for="answer-answer-3">3</label>
+	<input id="answer-answer-4" type="radio" name="answer" value="4" /><label for="answer-answer-4">4</label>
+	<input id="answer-answer-5" type="radio" name="answer" value="5" /><label for="answer-answer-5">5</label>
+	</span>
+	
+	<br />
+	
+	<label for="answer-comment">Comments:</label><br />
+	<textarea id="answer-comment" name="comment" rows="8" cols="50"></textarea><br />
+	
+	<input type="submit" name="submit" value="Lock In Answer" />
+	<input type="hidden" name="id" value="<?php echo $this->statement->getCode() ?>" />
+</form>

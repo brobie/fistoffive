@@ -1,0 +1,25 @@
+<?php echo $this->doctype() ?>
+<html>
+	<!-- head Start -->
+    <?php echo $this->render($this->headPhtml);?>
+	<!-- head End -->
+	<body id="<?php echo $this->bodyId ?>" class="<?php echo $this->bodyClass ?>">
+		<div class="<?php echo $this->containerClass ?>">
+        	<!-- header Start -->
+            <?php echo $this->render($this->headerPhtml); ?>
+            <!-- header End -->
+        	<!-- header Start -->
+            <?php echo $this->render($this->navigationPhtml); ?>
+            <!-- header End -->
+            <!-- messages Start -->
+            <?php echo $this->render($this->messagesPhtml); ?>
+            <!-- messages End -->
+        	<!-- content Start -->
+            <?php echo $this->layout()->content ?>
+            <!-- content End -->
+        </div>
+        <!-- Footer Start -->
+        <?php echo $this->render($this->footerPhtml); ?>
+        <!-- Footer End -->
+	</body>
+</html>

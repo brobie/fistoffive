@@ -1,0 +1,58 @@
+<div id="the-statement" <?php if ($this->statement->getStatus() == Fof_Model_Statement::STATEMENT_STATUS_PUBLISHED):?>class="<?php echo $this->decision; ?>"<?php endif;?>>
+	<?php echo $this->statement->getStatement() ?>
+</div>
+
+<div id="answer-link">
+	<a href="/statement/answer/id/<?php echo $this->statement->getCode(); ?>">Choose your answer</a>
+</div>
+
+<div id="number-of-answers">
+	Answers: <?php echo count($this->answers) ?>
+</div>
+<hr />
+<?php if ($this->answers):?>
+	<?php foreach($this->answers as $answer):?>
+		<div class="answer">
+			<strong><?php echo $answer->getName() ?></strong> has answered<?php echo ($this->statement->getStatus() == Fof_Model_Statement::STATEMENT_STATUS_PUBLISHED ? ': <strong>'. $answer->getAnswer().'</strong>' : ' but the statment isn\'t published') ?>
+			<?php if ($answer->getComment() && $this->statement->getStatus() == Fof_Model_Statement::STATEMENT_STATUS_PUBLISHED):?>
+				<a href="#" class="answer-comment" title="<?php echo $answer->getComment()?>"><img src="/assets/images/comment_icon.png" /></a>
+			<?php endif;?>
+		</div>
+	<?php endforeach;?>
+		<hr />
+	
+	<?php if ($this->statement->getStatus() == Fof_Model_Statement::STATEMENT_STATUS_PUBLISHED):?>
+		<div id="avg-answer">
+			The average answer is: <?php echo $this->average; ?>
+			<div id="decision" class="<?php echo $this->decision; ?>">
+				<?php if ($this->decision == Fof_Model_Statement::STATEMENT_DECISION_UNANSWERED):?>
+					This question is unanswered.
+				<?php elseif ($this->decision == Fof_Model_Statement::STATEMENT_DECISION_UNDECIDED):?>
+					This question has answers above AND below 3 - Ready? Fight!
+				<?php elseif ($this->decision == Fof_Model_Statement::STATEMENT_DECISION_MEH):?>
+					Meh - Everyone answered 3.
+				<?php elseif ($this->decision == Fof_Model_Statement::STATEMENT_DECISION_NEGATIVE):?>
+					Denied! Everyone answered 3 or below.
+				<?php elseif ($this->decision == Fof_Model_Statement::STATEMENT_DECISION_POSITIVE):?>
+					Success! Everyone answered 3 or above.
+				<?php endif;?>
+			</div>
+		</div>
+	<?php endif;?>
+	
+<?php else:?>
+	<div id="no-answers">
+		<?php echo 'Nobody has answered yet.'?>
+	</div>
+	<hr />
+	
+<?php endif;?>
+
+<?php if ($this->answers):?>
+	<div id="publish-form">
+		<form method="post" action="/statement/publish">
+			<input type="hidden" name="id" value="<?php echo $this->statement->getCode() ?>"/>
+			<input type="submit" name="submit" value="Publish Answers" />
+		</form>
+	</div>
+<?php endif;?>
