@@ -54,7 +54,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		
 		$view->bodyId = 'single';
 		$view->bodyClass = '';
-		$view->containerClass = 'container_16';
+		$view->containerClass = 'container';
 		$view->nofollow = false;
 		
 		$view->doctype('XHTML1_STRICT');
