@@ -72,10 +72,10 @@ class StatementController extends AbstractController
     	$this->view->domain = $_SERVER['HTTP_HOST'];
     	
     	
-        $this->view->title = "Fof | Statement | View";
+        $this->view->title = "Fist of Five | Viewing the Statement";
         
-        $this->view->metaDescription = "Fof Main  Statement | View";
-        $this->view->metaKeywords = "Fof meta keywords for  Statement | View";
+        $this->view->metaDescription = "View the statement along with its answers and statistics about the statement.";
+        $this->view->metaKeywords = "fist of five, agile, scrum, statement, question";
         
         $this->view->bodyId = "body";
     }
@@ -93,11 +93,11 @@ class StatementController extends AbstractController
     	 
     	$this->view->statement = $statement;
     	
-    	$this->view->title = "Fof | Statement | Answer";
-    
-    	$this->view->metaDescription = "Fof Main  Statement | Answer";
-    	$this->view->metaKeywords = "Fof meta keywords for  Statement | Answer";
-    
+    	 $this->view->title = "Fist of Five | Answer the Statement";
+        
+        $this->view->metaDescription = "Answer the statement with a number between 1 and 5.  It is required to enter your name for maximum transparency.  The comment is optional.";
+        $this->view->metaKeywords = "fist of five, agile, scrum, statement, question";
+      
     	$this->view->bodyId = "body";
     }
     
